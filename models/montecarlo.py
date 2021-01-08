@@ -2,16 +2,18 @@ import pandas as pd
 import numpy as np
 
 
-def montecarlo(data):
+def montecarlo(data, days, simulations):
     # Variables for the simulation
     return_std = data['Pct change'].std()  # Compute std of daily pct returns
-    days = 60
-    simulations = 1000
+    print('Standard deviation -> ' + str(return_std))
+    days = days
+    simulations = simulations
 
     estimated_df = pd.DataFrame()  # Empty df for the results
     estimated_prices = []
 
     for simulation in range(simulations):
+        print('Simulation -> ' + str(simulation))
         price = data['Close'][-1]
         simulation_prices = [price]
 

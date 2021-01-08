@@ -4,12 +4,12 @@ from request_data import request_data
 
 # Change URL to request other product
 historical_df, product = request_data(
-    'https://query1.finance.yahoo.com/v7/finance/download/BTC-USD?period1=1410912000&period2=1609027200'
+    'https://query1.finance.yahoo.com/v7/finance/download/BTC-USD?period1=1602115200&period2=1610064000'
     '&interval=1d&events=history&includeAdjustedClose=true')
 
 # Compute model
-estimated_df, estimated_prices = montecarlo(data=historical_df)
-
+estimated_df, estimated_prices = montecarlo(data=historical_df, days=60, simulations=10000)
+print('Plotting...')
 # Plot historical daily pct change
 historical_plot(data=historical_df['Pct change'], ylabel='Percentage change',
                 title=product, grid=True)
